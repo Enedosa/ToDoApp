@@ -19,13 +19,16 @@ class OnboardingViewController: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		onboardingScreenConfig()
+    }
+	
+	private func onboardingScreenConfig() {
 		name = UserDefaults.standard.string(forKey: "name") ?? ""
-		print(name)
 		if name != "" {
 			nameTextField.text = name
 		}
 		nextButton.addTarget(self, action: #selector(didTapNext), for: .touchUpInside)
-    }
+	}
 	
 	@objc func didTapNext() {
 		let mainVC = MainViewController()
