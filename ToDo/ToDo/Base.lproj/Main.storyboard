@@ -48,7 +48,7 @@
                                     <color key="baseBackgroundColor" red="0.22190034389999999" green="0.7065350413" blue="0.73748761419999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="OYt-xs-YyP" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="OEQ-wA-tr4"/>
+                                    <segue destination="OYt-xs-YyP" kind="presentation" modalPresentationStyle="fullScreen" id="OEQ-wA-tr4"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toDo" translatesAutoresizingMaskIntoConstraints="NO" id="dyV-3a-55X">
@@ -178,9 +178,6 @@
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                     </preferredSymbolConfiguration>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="De1-1c-g8u" kind="presentation" modalPresentationStyle="fullScreen" id="W25-Tk-y3Z"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage your activities." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vw-aH-nn5">
                                 <rect key="frame" x="20" y="163.5" width="175.5" height="20.5"/>
@@ -312,6 +309,9 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="20"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapCreate:" destination="De1-1c-g8u" eventType="touchUpInside" id="9ap-bn-9Tu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9lk-Gh-Cjw"/>
