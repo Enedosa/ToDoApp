@@ -15,6 +15,7 @@ class OnboardingViewController: UIViewController {
 	var name: String = ""
 	override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(named: "field")
 		onboardingScreenConfig()
     }
 	private func onboardingScreenConfig() {

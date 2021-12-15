@@ -23,14 +23,18 @@ class CreateViewController: UIViewController {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Title:"
+        label.textColor = .white
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
 	}()
 	let todoTitleTextField: UITextField = {
 		let textField = UITextField()
 		textField.placeholder = "Enter your todo"
+        textField.backgroundColor = UIColor(named: "colorTodo")
 		textField.borderStyle = .roundedRect
-		textField.layer.cornerRadius = 5
-		textField.layer.borderWidth = 0.5
+		textField.layer.cornerRadius = 6
+        textField.layer.borderWidth = 0.8
+        textField.textColor = .white
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()
@@ -38,6 +42,8 @@ class CreateViewController: UIViewController {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Description:"
+        label.textColor = .white
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
 	}()
 	let descriptionTextView: UITextView = {
@@ -45,24 +51,30 @@ class CreateViewController: UIViewController {
 		textView.translatesAutoresizingMaskIntoConstraints = false
 		textView.layer.cornerRadius = 5
 		textView.layer.borderWidth = 0.5
+        textView.backgroundColor = UIColor(named: "colorTodo")
 		return textView
 	}()
 	let dateLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Day:"
+        label.textColor = .white
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
 	}()
 	let datePickerView: UIDatePicker = {
 		let picker = UIDatePicker()
 		picker.datePickerMode = .date
 		picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.backgroundColor = UIColor(named: "colorTodo")
 		return picker
 	}()
 	let priorityLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "priority:"
+        label.textColor = .white
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
 	}()
 	let priorityPicker: UITextField = {
@@ -70,8 +82,10 @@ class CreateViewController: UIViewController {
 		textField.loadDropdownData(data: ["High", "Medium", "Low"])
 		textField.borderStyle = .roundedRect
 		textField.textAlignment = .right
-		textField.layer.cornerRadius = 5
-		textField.layer.borderWidth = 0.5
+		textField.layer.cornerRadius = 6
+		textField.layer.borderWidth = 0.8
+        textField.textColor = .white
+        textField.backgroundColor = UIColor(named: "colorTodo")
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()
@@ -108,7 +122,7 @@ class CreateViewController: UIViewController {
 			constant: 20).isActive = true
 		todoTitleLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
 			multiplier: 0.95).isActive = true
-		todoTitleLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		todoTitleLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
 		todoTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		todoTitleTextField.topAnchor.constraint(equalTo: todoTitleLabel.bottomAnchor,
 			constant: 10).isActive = true
