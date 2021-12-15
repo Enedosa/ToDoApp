@@ -15,11 +15,12 @@ class CreateViewController: UIViewController {
 	var textFieldText = ""
 	var btnTitle = "Create"
 	var todos = [String]()
+   
     
 	let todoTitleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Title:"
+		label.text = "Title"
         label.textColor = .white
         label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
@@ -29,8 +30,10 @@ class CreateViewController: UIViewController {
 		textField.placeholder = "Enter your todo"
         textField.backgroundColor = UIColor(named: "colorTodo")
 		textField.borderStyle = .roundedRect
-		textField.layer.cornerRadius = 6
-        textField.layer.borderWidth = 0.8
+        textField.layer.cornerRadius = 15.0
+        textField.layer.borderWidth = 2.0
+        textField.layer.borderColor = UIColor.darkGray.cgColor
+        textField.layer.masksToBounds = true
         textField.textColor = .white
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
@@ -38,7 +41,7 @@ class CreateViewController: UIViewController {
 	let descriptionLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Description:"
+		label.text = "Description"
         label.textColor = .white
         label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
@@ -46,15 +49,17 @@ class CreateViewController: UIViewController {
 	let descriptionTextView: UITextView = {
 		let textView = UITextView()
 		textView.translatesAutoresizingMaskIntoConstraints = false
-		textView.layer.cornerRadius = 5
-		textView.layer.borderWidth = 0.5
+        textView.layer.cornerRadius = 15.0
+        textView.layer.borderWidth = 2.0
+        textView.layer.borderColor = UIColor.darkGray.cgColor
+        textView.layer.masksToBounds = true
         textView.backgroundColor = UIColor(named: "colorTodo")
 		return textView
 	}()
 	let dateLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Day:"
+		label.text = "Day"
         label.textColor = .white
         label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
@@ -64,6 +69,10 @@ class CreateViewController: UIViewController {
 		picker.datePickerMode = .date
 		picker.translatesAutoresizingMaskIntoConstraints = false
         picker.backgroundColor = UIColor(named: "colorTodo")
+        picker.layer.cornerRadius = 15.0
+        picker.layer.borderWidth = 2.0
+        picker.layer.borderColor = UIColor.darkGray.cgColor
+        picker.layer.masksToBounds = true
 		return picker
 	}()
 	let priorityLabel: UILabel = {
@@ -79,8 +88,10 @@ class CreateViewController: UIViewController {
 		textField.loadDropdownData(data: ["High", "Medium", "Low"])
 		textField.borderStyle = .roundedRect
 		textField.textAlignment = .right
-		textField.layer.cornerRadius = 6
-		textField.layer.borderWidth = 0.8
+        textField.layer.cornerRadius = 15.0
+        textField.layer.borderWidth = 2.0
+        textField.layer.borderColor = UIColor.darkGray.cgColor
+        textField.layer.masksToBounds = true
         textField.textColor = .white
         textField.backgroundColor = UIColor(named: "colorTodo")
 		textField.translatesAutoresizingMaskIntoConstraints = false

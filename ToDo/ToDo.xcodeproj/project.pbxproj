@@ -18,6 +18,7 @@
 		B46F6AAD27678F2D0038DEAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46F6AAB27678F2D0038DEAC /* Main.storyboard */; };
 		B46F6AAF27678F2F0038DEAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46F6AAE27678F2F0038DEAC /* Assets.xcassets */; };
 		B46F6AB227678F2F0038DEAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46F6AB027678F2F0038DEAC /* LaunchScreen.storyboard */; };
+		B4AD64B6276A293A0028D4DE /* —Pngtree—abstract background_4121274.png in Resources */ = {isa = PBXBuildFile; fileRef = B4AD64B5276A293A0028D4DE /* —Pngtree—abstract background_4121274.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B46F6AAE27678F2F0038DEAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B46F6AB127678F2F0038DEAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B46F6AB327678F2F0038DEAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4AD64B5276A293A0028D4DE /* —Pngtree—abstract background_4121274.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "—Pngtree—abstract background_4121274.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				B46F6AAE27678F2F0038DEAC /* Assets.xcassets */,
 				B46F6AB027678F2F0038DEAC /* LaunchScreen.storyboard */,
 				B46F6AB327678F2F0038DEAC /* Info.plist */,
+				B4AD64B5276A293A0028D4DE /* —Pngtree—abstract background_4121274.png */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4AD64B6276A293A0028D4DE /* —Pngtree—abstract background_4121274.png in Resources */,
 				B46F6AB227678F2F0038DEAC /* LaunchScreen.storyboard in Resources */,
 				B46F6AAF27678F2F0038DEAC /* Assets.xcassets in Resources */,
 				B46F6AAD27678F2D0038DEAC /* Main.storyboard in Resources */,
