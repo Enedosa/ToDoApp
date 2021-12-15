@@ -12,9 +12,13 @@ class CreateViewController: UIViewController {
 	var addDescriptions: ((String) -> Void)?
 	var addDates: ((Date) -> Void)?
 	var addPriorities: ((String) -> Void)?
-	var textFieldText = ""
+	var todoFieldText = ""
+	var descFieldText = ""
+	var priorityText = ""
 	var btnTitle = "Create"
 	var todos = [String]()
+	var descriptions = [String]()
+	var priority = [String]()
 	let todoTitleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +75,7 @@ class CreateViewController: UIViewController {
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()
-	let addButton: UIButton = {
+	lazy var addButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.backgroundColor = .systemBlue
@@ -84,7 +88,9 @@ class CreateViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
-		self.todoTitleTextField.text = textFieldText
+		self.todoTitleTextField.text = todoFieldText
+		self.descriptionTextView.text = descFieldText
+		self.priorityPicker.text = priorityText
 		self.addButton.setTitle(btnTitle, for: .normal)
 		layoutConstraints()
 	}
