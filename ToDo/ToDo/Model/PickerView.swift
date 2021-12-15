@@ -44,7 +44,6 @@ class PickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 		pickerTextField.text = pickerData[row]
 		pickerTextField.resignFirstResponder()
 		pickerTextField.endEditing(true)
-
 	}
 
 }

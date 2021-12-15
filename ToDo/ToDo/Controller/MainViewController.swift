@@ -8,7 +8,6 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
 	@IBOutlet weak var welcomeMsg: UILabel!
 	@IBOutlet weak var addTodoButton: UIButton!
 	@IBOutlet weak var todoListTableView: UITableView!
@@ -23,6 +22,14 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 		todoListTableView?.dataSource = self
 		todoListTableView?.delegate = self
+		mainConfig()
+	}
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		todoConfig()
+		todoListTableView?.reloadData()
+	}
+	private func mainConfig() {
 		todos = UserDefaults.standard.stringArray(forKey: "todos") ?? []
 		descriptions = UserDefaults.standard.stringArray(forKey: "descriptions") ?? []
 		dates = UserDefaults.standard.stringArray(forKey: "dates") ?? []
@@ -31,11 +38,6 @@ class MainViewController: UIViewController {
 		addTodoButton?.addTarget(self, action: #selector(didTapAdd), for: .touchUpInside)
 		welcomeMsg.text = "Hello \(name)!"
 		isTapped = UserDefaults.standard.bool(forKey: "isTapped")
-	}
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		todoConfig()
-		todoListTableView?.reloadData()
 	}
 	private func todoConfig() {
 		todos = UserDefaults.standard.array(forKey: "todos") as? [String] ?? []
@@ -128,7 +130,6 @@ extension MainViewController: UITableViewDelegate {
 		createVC.addDates = { [weak self] newDate in
 			self?.descriptions[indexPath.row] = newDate
 			UserDefaults.standard.set(self?.dates, forKey: "dates")
-			print(self?.dates)
 		}
 		createVC.addPriorities = { [weak self] newPriority in
 			self?.priorities[indexPath.row] = newPriority

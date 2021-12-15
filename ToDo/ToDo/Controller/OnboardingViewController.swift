@@ -8,8 +8,6 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
-    
-
 	@IBOutlet weak var nameTextField: UITextField!
 	@IBOutlet weak var nextButton: UIButton!
 	let mainVC = MainViewController()

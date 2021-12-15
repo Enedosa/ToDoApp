@@ -18,13 +18,9 @@ class CreateViewController: UIViewController {
 	var priorityText = ""
 	var btnTitle = "Create"
 	var todos = [String]()
-<<<<<<< HEAD
 	var descriptions = [String]()
+	var dates = [String]()
 	var priority = [String]()
-=======
-   
-    
->>>>>>> dev
 	let todoTitleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -118,9 +114,25 @@ class CreateViewController: UIViewController {
 	override func viewDidLoad() {
 		print(date)
 		super.viewDidLoad()
-		view.backgroundColor = .systemBackground
+		view.backgroundColor = UIColor(named: "field")
 		updateScreenConfig()
 		layoutConstraints()
+	}
+	private func layoutConstraints() {
+		view.addSubview(todoTitleLabel)
+		view.addSubview(todoTitleTextField)
+		view.addSubview(descriptionLabel)
+		view.addSubview(descriptionTextView)
+		view.addSubview(dateLabel)
+		view.addSubview(datePickerView)
+		view.addSubview(priorityLabel)
+		view.addSubview(priorityPicker)
+		view.addSubview(addButton)
+		todoSectionLayoutConstraints()
+		descriptionSectionLayoutConstraints()
+		dateSectionLayoutConstraints()
+		prioritySectionLayoutConstraints()
+		addButtonLayoutConstraints()
 	}
 	private func updateScreenConfig() {
 		self.todoTitleTextField.text = todoFieldText
@@ -134,41 +146,36 @@ class CreateViewController: UIViewController {
 		self.priorityPicker.text = priorityText
 		self.addButton.setTitle(btnTitle, for: .normal)
 	}
-	private func layoutConstraints() {
-		view.addSubview(todoTitleLabel)
-		view.addSubview(todoTitleTextField)
-		view.addSubview(descriptionLabel)
-		view.addSubview(descriptionTextView)
-		view.addSubview(dateLabel)
-		view.addSubview(datePickerView)
-		view.addSubview(priorityLabel)
-		view.addSubview(priorityPicker)
-		view.addSubview(addButton)
+	private func todoSectionLayoutConstraints() {
 		todoTitleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor,
-			constant: 20).isActive = true
+											constant: 20).isActive = true
 		todoTitleLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
-			multiplier: 0.95).isActive = true
+											  multiplier: 0.95).isActive = true
 		todoTitleLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
 		todoTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		todoTitleTextField.topAnchor.constraint(equalTo: todoTitleLabel.bottomAnchor,
-			constant: 10).isActive = true
+												constant: 10).isActive = true
 		todoTitleTextField.widthAnchor.constraint(equalTo: todoTitleLabel.widthAnchor).isActive = true
 		todoTitleTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
 		todoTitleTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+	}
+	private func descriptionSectionLayoutConstraints() {
 		descriptionLabel.topAnchor.constraint(equalTo: todoTitleTextField.bottomAnchor,
-			constant: 20).isActive = true
+											  constant: 20).isActive = true
 		descriptionLabel.widthAnchor.constraint(equalTo: todoTitleLabel.widthAnchor).isActive = true
 		descriptionLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
 		descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		descriptionLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor,
-			constant: 10).isActive = true
+												  constant: 10).isActive = true
 		descriptionLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor,
-			constant: 10).isActive = true
+												   constant: 10).isActive = true
 		descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor,
-			constant: 10).isActive = true
+												 constant: 10).isActive = true
 		descriptionTextView.widthAnchor.constraint(equalTo: todoTitleLabel.widthAnchor).isActive = true
 		descriptionTextView.heightAnchor.constraint(equalToConstant: 200).isActive = true
 		descriptionTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+	}
+	private func dateSectionLayoutConstraints() {
 		dateLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 20).isActive = true
 		dateLabel.widthAnchor.constraint(equalTo: todoTitleLabel.widthAnchor, multiplier: 0.4).isActive = true
 		dateLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -181,6 +188,8 @@ class CreateViewController: UIViewController {
 		datePickerView.trailingAnchor.constraint(
 			equalTo: view.layoutMarginsGuide.trailingAnchor,
 			constant: 10).isActive = true
+	}
+	private func prioritySectionLayoutConstraints() {
 		priorityLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20).isActive = true
 		priorityLabel.widthAnchor.constraint(equalTo: todoTitleLabel.widthAnchor, multiplier: 0.4).isActive = true
 		priorityLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -193,6 +202,8 @@ class CreateViewController: UIViewController {
 		priorityPicker.trailingAnchor.constraint(
 			equalTo: view.layoutMarginsGuide.trailingAnchor,
 			constant: 10).isActive = true
+	}
+	private func addButtonLayoutConstraints() {
 		addButton.topAnchor.constraint(equalTo: priorityPicker.bottomAnchor, constant: 60).isActive = true
 		addButton.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 		addButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
