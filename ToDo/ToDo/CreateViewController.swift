@@ -10,10 +10,11 @@ import UIKit
 class CreateViewController: UIViewController {
 	var addTodos: ((String) -> Void)?
 	var addDescriptions: ((String) -> Void)?
-	var addDates: ((Date) -> Void)?
+	var addDates: ((String) -> Void)?
 	var addPriorities: ((String) -> Void)?
 	var todoFieldText = ""
 	var descFieldText = ""
+	var date = ""
 	var priorityText = ""
 	var btnTitle = "Create"
 	var todos = [String]()
@@ -100,13 +101,23 @@ class CreateViewController: UIViewController {
 		return button
 	}()
 	override func viewDidLoad() {
+		print(date)
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
+		updateScreenConfig()
+		layoutConstraints()
+	}
+	private func updateScreenConfig() {
 		self.todoTitleTextField.text = todoFieldText
 		self.descriptionTextView.text = descFieldText
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "dd/MM/yy"
+		if let newDate = dateFormatter.date(from: date) {
+			datePickerView.date = newDate
+		}
+		self.datePickerView.setDate(dateFormatter.date(from: date) ?? datePickerView.date, animated: true)
 		self.priorityPicker.text = priorityText
 		self.addButton.setTitle(btnTitle, for: .normal)
-		layoutConstraints()
 	}
 	private func layoutConstraints() {
 		view.addSubview(todoTitleLabel)
@@ -173,6 +184,10 @@ class CreateViewController: UIViewController {
 		addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 	}
 	@objc func didTapAdd() {
+		let formatter = DateFormatter()
+		formatter.dateStyle = .medium
+		formatter.timeStyle = .none
+		let pickerDate = formatter.string(from: datePickerView.date)
 		guard let text = todoTitleTextField.text,
 			  let desc = descriptionTextView.text,
 			  let priority = priorityPicker.text,
@@ -180,6 +195,7 @@ class CreateViewController: UIViewController {
 				text != " " else { return }
 		addTodos?(text)
 		addDescriptions?(desc)
+		addDates?(pickerDate)
 		addPriorities?(priority)
 		navigationController?.popViewController(animated: true)
 	}

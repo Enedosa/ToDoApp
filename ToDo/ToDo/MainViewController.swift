@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
 	var isTapped: Bool!
 	var todos = [String]()
 	var descriptions = [String]()
+	var dates = [String]()
 	var priorities = [String]()
 	var name = ""
 	override func viewDidLoad() {
@@ -23,22 +24,22 @@ class MainViewController: UIViewController {
 		todoListTableView?.delegate = self
 		todos = UserDefaults.standard.stringArray(forKey: "todos") ?? []
 		descriptions = UserDefaults.standard.stringArray(forKey: "descriptions") ?? []
+		dates = UserDefaults.standard.stringArray(forKey: "dates") ?? []
 		priorities = UserDefaults.standard.stringArray(forKey: "priorities") ?? []
 		name = UserDefaults.standard.string(forKey: "name") ?? ""
 		addTodoButton?.addTarget(self, action: #selector(didTapAdd), for: .touchUpInside)
 		welcomeMsg.text = "Hello \(name)!"
-		isTapped = UserDefaults.standard.bool(forKey: "isTapped")	}
+		isTapped = UserDefaults.standard.bool(forKey: "isTapped")
+	}
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		todoConfig()
 		todoListTableView?.reloadData()
-		
-		print(descriptions)
-		print(priorities)
 	}
 	private func todoConfig() {
 		todos = UserDefaults.standard.array(forKey: "todos") as? [String] ?? []
 		descriptions = UserDefaults.standard.array(forKey: "descriptions") as? [String] ?? []
+		dates = UserDefaults.standard.array(forKey: "dates") as? [String] ?? []
 		priorities = UserDefaults.standard.array(forKey: "priorities") as? [String] ?? []
 		UserDefaults.resetStandardUserDefaults()
 	}
@@ -56,6 +57,12 @@ class MainViewController: UIViewController {
 			UserDefaults.resetStandardUserDefaults()
 			self?.todoListTableView.reloadData()
 		}
+		createVC.addDates = { [weak self] newDate in
+			self?.dates.append(newDate)
+			UserDefaults.standard.set(self?.dates, forKey: "dates")
+			UserDefaults.resetStandardUserDefaults()
+			self?.todoListTableView.reloadData()
+		}
 		createVC.addPriorities = { [weak self] newPriority in
 			self?.priorities.append(newPriority)
 			UserDefaults.standard.set(self?.priorities, forKey: "priorities")
@@ -64,10 +71,10 @@ class MainViewController: UIViewController {
 		}
 		navigationController?.pushViewController(createVC, animated: true)
 	}
-	@objc func didTapDelete() {
-		UserDefaults.standard.removeObject(forKey: "todos")
-		UserDefaults.standard.removeObject(forKey: "descriptions")
-		UserDefaults.standard.removeObject(forKey: "priorities")
+	func remove(_ item: [String]) {
+		for item in item {
+			UserDefaults.standard.removeObject(forKey: item)
+		}
 		UserDefaults.resetStandardUserDefaults()
 		todoListTableView.reloadData()
 	}
@@ -83,27 +90,16 @@ extension MainViewController: UITableViewDataSource {
 			for: indexPath) as? TodoTableViewCell else {
 			fatalError("unable to dequeue")
 		}
-		let image = UIImage(systemName: "checkmark.circle.fill")
-		let image2 = UIImage(systemName: "checkmark.circle")
-		if !(isTapped ?? false) {
-			isTapped = true
-			UserDefaults.standard.set(isTapped, forKey: "isTapped")
-			cell.checkBox.setImage(image, for: .normal)
-			cell.checkBox.tintColor = .systemGreen
-		} else {
-			isTapped = false
-			UserDefaults.standard.set(isTapped, forKey: "isTapped")
-			cell.checkBox.setImage(image2, for: .normal)
-			cell.checkBox.tintColor = .lightGray
-		}
 		cell.todoLabel.text = todos[indexPath.row]
 		cell.didDelete = { [weak self] in
 			guard let self = self else { return }
 			self.todos.remove(at: indexPath.row)
-			UserDefaults.standard.set(self.todos, forKey: "todos")
 			self.descriptions.remove(at: indexPath.row)
-			UserDefaults.standard.set(self.descriptions, forKey: "descriptions")
+			self.dates.remove(at: indexPath.row)
 			self.priorities.remove(at: indexPath.row)
+			UserDefaults.standard.set(self.todos, forKey: "todos")
+			UserDefaults.standard.set(self.descriptions, forKey: "descriptions")
+			UserDefaults.standard.set(self.dates, forKey: "dates")
 			UserDefaults.standard.set(self.priorities, forKey: "priorities")
 			UserDefaults.resetStandardUserDefaults()
 			self.todoListTableView.reloadData()
@@ -127,6 +123,11 @@ extension MainViewController: UITableViewDelegate {
 		createVC.addDescriptions = { [weak self] newDesc in
 			self?.descriptions[indexPath.row] = newDesc
 			UserDefaults.standard.set(self?.descriptions, forKey: "descriptions")
+		}
+		createVC.addDates = { [weak self] newDate in
+			self?.descriptions[indexPath.row] = newDate
+			UserDefaults.standard.set(self?.dates, forKey: "dates")
+			print(self?.dates)
 		}
 		createVC.addPriorities = { [weak self] newPriority in
 			self?.priorities[indexPath.row] = newPriority
