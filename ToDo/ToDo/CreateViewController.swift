@@ -10,55 +10,85 @@ import UIKit
 class CreateViewController: UIViewController {
 	var addTodos: ((String) -> Void)?
 	var addDescriptions: ((String) -> Void)?
-	var addDates: ((Date) -> Void)?
+	var addDates: ((String) -> Void)?
 	var addPriorities: ((String) -> Void)?
-	var textFieldText = ""
+	var todoFieldText = ""
+	var descFieldText = ""
+	var date = ""
+	var priorityText = ""
 	var btnTitle = "Create"
 	var todos = [String]()
+<<<<<<< HEAD
+	var descriptions = [String]()
+	var priority = [String]()
+=======
+   
+    
+>>>>>>> dev
 	let todoTitleLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Title:"
+		label.text = "Title"
+        label.textColor = .white
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
 	}()
 	let todoTitleTextField: UITextField = {
 		let textField = UITextField()
 		textField.placeholder = "Enter your todo"
+        textField.backgroundColor = UIColor(named: "colorTodo")
 		textField.borderStyle = .roundedRect
-		textField.layer.cornerRadius = 5
-		textField.layer.borderWidth = 0.5
+        textField.layer.cornerRadius = 15.0
+        textField.layer.borderWidth = 2.0
+        textField.layer.borderColor = UIColor.darkGray.cgColor
+        textField.layer.masksToBounds = true
+        textField.textColor = .white
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()
 	let descriptionLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Description:"
+		label.text = "Description"
+        label.textColor = .white
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
 	}()
 	let descriptionTextView: UITextView = {
 		let textView = UITextView()
 		textView.translatesAutoresizingMaskIntoConstraints = false
-		textView.layer.cornerRadius = 5
-		textView.layer.borderWidth = 0.5
+        textView.layer.cornerRadius = 15.0
+        textView.layer.borderWidth = 2.0
+        textView.layer.borderColor = UIColor.darkGray.cgColor
+        textView.layer.masksToBounds = true
+        textView.backgroundColor = UIColor(named: "colorTodo")
 		return textView
 	}()
 	let dateLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Day:"
+		label.text = "Day"
+        label.textColor = .white
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
 	}()
 	let datePickerView: UIDatePicker = {
 		let picker = UIDatePicker()
 		picker.datePickerMode = .date
 		picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.backgroundColor = UIColor(named: "colorTodo")
+        picker.layer.cornerRadius = 15.0
+        picker.layer.borderWidth = 2.0
+        picker.layer.borderColor = UIColor.darkGray.cgColor
+        picker.layer.masksToBounds = true
 		return picker
 	}()
 	let priorityLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "priority:"
+        label.textColor = .white
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
 		return label
 	}()
 	let priorityPicker: UITextField = {
@@ -66,12 +96,16 @@ class CreateViewController: UIViewController {
 		textField.loadDropdownData(data: ["High", "Medium", "Low"])
 		textField.borderStyle = .roundedRect
 		textField.textAlignment = .right
-		textField.layer.cornerRadius = 5
-		textField.layer.borderWidth = 0.5
+        textField.layer.cornerRadius = 15.0
+        textField.layer.borderWidth = 2.0
+        textField.layer.borderColor = UIColor.darkGray.cgColor
+        textField.layer.masksToBounds = true
+        textField.textColor = .white
+        textField.backgroundColor = UIColor(named: "colorTodo")
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()
-	let addButton: UIButton = {
+	lazy var addButton: UIButton = {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.backgroundColor = .systemBlue
@@ -82,11 +116,23 @@ class CreateViewController: UIViewController {
 		return button
 	}()
 	override func viewDidLoad() {
+		print(date)
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
-		self.todoTitleTextField.text = textFieldText
-		self.addButton.setTitle(btnTitle, for: .normal)
+		updateScreenConfig()
 		layoutConstraints()
+	}
+	private func updateScreenConfig() {
+		self.todoTitleTextField.text = todoFieldText
+		self.descriptionTextView.text = descFieldText
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "dd/MM/yy"
+		if let newDate = dateFormatter.date(from: date) {
+			datePickerView.date = newDate
+		}
+		self.datePickerView.setDate(dateFormatter.date(from: date) ?? datePickerView.date, animated: true)
+		self.priorityPicker.text = priorityText
+		self.addButton.setTitle(btnTitle, for: .normal)
 	}
 	private func layoutConstraints() {
 		view.addSubview(todoTitleLabel)
@@ -102,7 +148,7 @@ class CreateViewController: UIViewController {
 			constant: 20).isActive = true
 		todoTitleLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
 			multiplier: 0.95).isActive = true
-		todoTitleLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		todoTitleLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
 		todoTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		todoTitleTextField.topAnchor.constraint(equalTo: todoTitleLabel.bottomAnchor,
 			constant: 10).isActive = true
@@ -153,6 +199,10 @@ class CreateViewController: UIViewController {
 		addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 	}
 	@objc func didTapAdd() {
+		let formatter = DateFormatter()
+		formatter.dateStyle = .medium
+		formatter.timeStyle = .none
+		let pickerDate = formatter.string(from: datePickerView.date)
 		guard let text = todoTitleTextField.text,
 			  let desc = descriptionTextView.text,
 			  let priority = priorityPicker.text,
@@ -160,6 +210,7 @@ class CreateViewController: UIViewController {
 				text != " " else { return }
 		addTodos?(text)
 		addDescriptions?(desc)
+		addDates?(pickerDate)
 		addPriorities?(priority)
 		navigationController?.popViewController(animated: true)
 	}

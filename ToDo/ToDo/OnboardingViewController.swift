@@ -8,6 +8,7 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
+    
 
 	@IBOutlet weak var nameTextField: UITextField!
 	@IBOutlet weak var nextButton: UIButton!
@@ -15,6 +16,7 @@ class OnboardingViewController: UIViewController {
 	var name: String = ""
 	override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(named: "field")
 		onboardingScreenConfig()
     }
 	private func onboardingScreenConfig() {
