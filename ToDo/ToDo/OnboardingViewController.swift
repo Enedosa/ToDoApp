@@ -10,18 +10,13 @@ import UIKit
 class OnboardingViewController: UIViewController {
 
 	@IBOutlet weak var nameTextField: UITextField!
-	
 	@IBOutlet weak var nextButton: UIButton!
-	
 	let mainVC = MainViewController()
-	
 	var name: String = ""
-	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		onboardingScreenConfig()
     }
-	
 	private func onboardingScreenConfig() {
 		name = UserDefaults.standard.string(forKey: "name") ?? ""
 		if name != "" {
@@ -29,7 +24,6 @@ class OnboardingViewController: UIViewController {
 		}
 		nextButton.addTarget(self, action: #selector(didTapNext), for: .touchUpInside)
 	}
-	
 	@objc func didTapNext() {
 		let mainVC = MainViewController()
 		guard let text = nameTextField.text, !text.isEmpty, text != " " else { return }
@@ -39,4 +33,3 @@ class OnboardingViewController: UIViewController {
 	}
 
 }
-
