@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -95,8 +95,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ic8-3N-26d">
-                                <rect key="frame" x="0.0" y="195" width="414" height="701"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="195" width="414" height="567"/>
+                                <color key="backgroundColor" red="0.2220521271" green="0.70650511979999997" blue="0.73757326599999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" rowHeight="119" id="s4e-nW-3Th" customClass="TodoTableViewCell" customModule="ToDo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="119"/>
@@ -113,8 +113,8 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jG-HT-pn1">
                                                                     <rect key="frame" x="0.0" y="0.0" width="44" height="40"/>
-                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="backgroundColor" red="0.04700427502" green="0.1325368583" blue="0.18255662919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="checkmark.circle" catalog="system" title=""/>
                                                                 </button>
@@ -125,7 +125,7 @@
                                                                         <constraint firstAttribute="height" constant="40" id="gMl-ug-pBv"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dli-fc-6DF">
@@ -137,7 +137,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" red="0.04700427502" green="0.1325368583" blue="0.18255662919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="Qc7-2m-pSg" firstAttribute="leading" secondItem="K1S-6V-Chq" secondAttribute="leading" id="7o5-1p-rkY"/>
                                                         <constraint firstAttribute="trailing" secondItem="Qc7-2m-pSg" secondAttribute="trailing" id="Wvs-dh-sbJ"/>
@@ -145,8 +145,14 @@
                                                         <constraint firstAttribute="bottom" secondItem="Qc7-2m-pSg" secondAttribute="bottom" constant="10" id="a25-hn-IDR"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="mJw-yT-P25"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.2220521271" green="0.70650511979999997" blue="0.73757326599999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="K1S-6V-Chq" firstAttribute="centerY" secondItem="DM8-jE-poq" secondAttribute="centerY" id="IdU-JQ-1uC"/>
                                                 <constraint firstItem="K1S-6V-Chq" firstAttribute="top" secondItem="DM8-jE-poq" secondAttribute="top" constant="10" id="era-Il-JSk"/>
@@ -155,7 +161,11 @@
                                                 <constraint firstItem="K1S-6V-Chq" firstAttribute="leading" secondItem="DM8-jE-poq" secondAttribute="leading" constant="10" id="ptD-LR-Lmw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.2220521271" green="0.70650511979999997" blue="0.73757326599999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="checkBox" destination="5jG-HT-pn1" id="MQt-Ce-cKL"/>
                                             <outlet property="deleteButton" destination="dli-fc-6DF" id="9fQ-V5-h3Y"/>
@@ -171,7 +181,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYt-jA-8FQ">
                                 <rect key="frame" x="315.5" y="781" width="68.5" height="51"/>
-                                <color key="tintColor" red="0.22190034389999999" green="0.7065350413" blue="0.73748761419999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.04700427502" green="0.1325368583" blue="0.18255662919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="large">
@@ -196,7 +206,7 @@
                             <constraint firstItem="Ic8-3N-26d" firstAttribute="top" secondItem="IUW-ga-zU9" secondAttribute="bottom" constant="55" id="5dM-j4-TD1"/>
                             <constraint firstItem="Ic8-3N-26d" firstAttribute="top" secondItem="2Vw-aH-nn5" secondAttribute="bottom" constant="11" id="7Dd-5j-joa"/>
                             <constraint firstItem="IUW-ga-zU9" firstAttribute="leading" secondItem="RbZ-b4-UBh" secondAttribute="leading" constant="20" id="KgH-GX-1m5"/>
-                            <constraint firstItem="RbZ-b4-UBh" firstAttribute="bottom" secondItem="Ic8-3N-26d" secondAttribute="bottom" constant="-34" id="RRI-c0-0aZ"/>
+                            <constraint firstItem="RbZ-b4-UBh" firstAttribute="bottom" secondItem="Ic8-3N-26d" secondAttribute="bottom" constant="100" id="RRI-c0-0aZ"/>
                             <constraint firstItem="RbZ-b4-UBh" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2Vw-aH-nn5" secondAttribute="trailing" symbolic="YES" id="YeQ-Jf-1Nn"/>
                             <constraint firstItem="Ic8-3N-26d" firstAttribute="leading" secondItem="RbZ-b4-UBh" secondAttribute="leading" id="ZIB-Ov-p5Z"/>
                             <constraint firstItem="RbZ-b4-UBh" firstAttribute="bottom" secondItem="nYt-jA-8FQ" secondAttribute="bottom" constant="30" id="hLm-3T-Dul"/>
@@ -219,7 +229,6 @@
         <!--Create View Controller-->
         <scene sceneID="44b-2e-hYv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dvQ-VM-bCo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="De1-1c-g8u" customClass="CreateViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="igB-3d-ZTO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -364,6 +373,7 @@
                         <outlet property="todoTitleTextField" destination="boI-KR-Yjc" id="arb-gU-VKQ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dvQ-VM-bCo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2686.9565217391305" y="97.767857142857139"/>
         </scene>
